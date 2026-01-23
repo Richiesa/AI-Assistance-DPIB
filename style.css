@@ -246,6 +246,37 @@ body.dark .suggestions button {
 body.dark .hint {
   color: #aaa;
 }
+.hint-bubble {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 8px 12px;
+}
+
+.hint-bubble span {
+  background: #f1f3f4;
+  color: #333;
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.hint-bubble span:hover {
+  background: #e0e0e0;
+}
+
+/* Dark mode */
+body.dark .hint-bubble span {
+  background: #2a2a2a;
+  color: #eee;
+}
+
+body.dark .hint-bubble span:hover {
+  background: #3a3a3a;
+}
+
 
 
 
