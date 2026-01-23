@@ -3,15 +3,23 @@
 <head>
   <meta charset="UTF-8">
   <title>Asisten AI DPIB</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<h2>Asisten AI DPIB</h2>
+<div class="chat-container">
+  <div class="chat-header">
+    <img src="logo.png" class="logo">
+    <span id="ai-name">Asisten AI DPIB</span>
+  </div>
 
-<input id="question" type="text" placeholder="Tanya seputar konstruksi">
-<button onclick="askAI()">Kirim</button>
+  <div id="chat-box" class="chat-box"></div>
 
-<div id="answer" style="margin-top:15px;"></div>
+  <div class="chat-input">
+    <input id="question" type="text" placeholder="Tanya seputar konstruksi...">
+    <button onclick="askAI()">Kirim</button>
+  </div>
+</div>
 
 <script src="script.js"></script>
 </body>
