@@ -48,4 +48,12 @@ function askAI() {
       addMessage("Gagal menghubungi AI backend.", "ai");
     });
 }
+document
+  .getElementById("question")
+  .addEventListener("keypress", function (e) {
+    if (e.key === "Enter") {
+      askAI();
+    }
+  });
+
 
