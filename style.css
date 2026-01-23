@@ -286,6 +286,26 @@ body.dark .ai-disclaimer {
     line-height: 1.4;
   }
 }
+.copyright {
+  font-size: 10px;
+  color: #888;
+  text-align: center;
+  padding-bottom: 10px;
+}
+
+/* Dark mode */
+body.dark .copyright {
+  color: #aaa;
+}
+
+/* Khusus HP */
+@media (max-width: 600px) {
+  .copyright {
+    font-size: 9px;
+  }
+}
+
+
 
 
 
