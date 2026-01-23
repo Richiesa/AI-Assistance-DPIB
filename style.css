@@ -1,0 +1,10 @@
+body {
+  font-family: Arial, sans-serif;
+  padding: 20px;
+}
+
+#answer {
+  margin-top: 12px;
+  padding: 10px;
+  background: #f0f0f0;
+}
