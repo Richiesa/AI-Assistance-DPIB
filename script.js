@@ -1,3 +1,9 @@
+const toggle = document.getElementById("darkToggle");
+
+toggle.addEventListener("click", () => {
+  document.body.classList.toggle("dark");
+});
+
 const chatBox = document.getElementById("chat-box");
 
 function addMessage(text, sender) {
@@ -32,3 +38,4 @@ function askAI() {
       addMessage("Gagal menghubungi AI backend.", "ai");
     });
 }
+
