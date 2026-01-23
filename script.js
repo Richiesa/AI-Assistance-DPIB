@@ -1,10 +1,9 @@
+const chatBox = document.getElementById("chat-box");
 const toggle = document.getElementById("darkToggle");
 
 toggle.addEventListener("click", () => {
   document.body.classList.toggle("dark");
 });
-
-const chatBox = document.getElementById("chat-box");
 
 function addMessage(text, sender) {
   const msg = document.createElement("div");
@@ -12,6 +11,17 @@ function addMessage(text, sender) {
   msg.innerText = text;
   chatBox.appendChild(msg);
   chatBox.scrollTop = chatBox.scrollHeight;
+}
+
+function addTyping() {
+  const typing = document.createElement("div");
+  typing.className = "message ai typing";
+  typing.innerHTML = `
+    <span></span><span></span><span></span>
+  `;
+  chatBox.appendChild(typing);
+  chatBox.scrollTop = chatBox.scrollHeight;
+  return typing;
 }
 
 function askAI() {
@@ -22,7 +32,7 @@ function askAI() {
   addMessage(question, "user");
   input.value = "";
 
-  addMessage("Mengetik...", "ai");
+  const typingBubble = addTyping();
 
   fetch(
     "https://dpib-ai-backend.vercel.app/api/chat?message=" +
@@ -30,11 +40,11 @@ function askAI() {
   )
     .then(res => res.json())
     .then(data => {
-      chatBox.lastChild.remove();
+      typingBubble.remove();
       addMessage(data.reply, "ai");
     })
     .catch(() => {
-      chatBox.lastChild.remove();
+      typingBubble.remove();
       addMessage("Gagal menghubungi AI backend.", "ai");
     });
 }
