@@ -55,5 +55,18 @@ document
       askAI();
     }
   });
+const textarea = document.getElementById("question");
+
+textarea.addEventListener("keydown", function (e) {
+  if (e.key === "Enter" && !e.shiftKey) {
+    e.preventDefault();
+    askAI();
+  }
+});
+textarea.addEventListener("input", () => {
+  textarea.style.height = "auto";
+  textarea.style.height = textarea.scrollHeight + "px";
+});
+
 
 
