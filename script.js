@@ -1,30 +1,34 @@
+const chatBox = document.getElementById("chat-box");
+
+function addMessage(text, sender) {
+  const msg = document.createElement("div");
+  msg.className = `message ${sender}`;
+  msg.innerText = text;
+  chatBox.appendChild(msg);
+  chatBox.scrollTop = chatBox.scrollHeight;
+}
+
 function askAI() {
-  const question = document.getElementById("question").value;
-  const answerBox = document.getElementById("answer");
+  const input = document.getElementById("question");
+  const question = input.value.trim();
+  if (!question) return;
 
-  if (!question) {
-    answerBox.innerText = "Silakan masukkan pertanyaan.";
-    return;
-  }
+  addMessage(question, "user");
+  input.value = "";
 
-  answerBox.innerText = "Sedang memproses pertanyaan...";
+  addMessage("Mengetik...", "ai");
 
   fetch(
     "https://dpib-ai-backend.vercel.app/api/chat?message=" +
     encodeURIComponent(question)
   )
-    .then(response => {
-      if (!response.ok) {
-        throw new Error("Response error");
-      }
-      return response.json();
-    })
+    .then(res => res.json())
     .then(data => {
-      console.log("Respon AI:", data); // DEBUG
-      answerBox.innerText = data.reply || "AI tidak memberikan jawaban.";
+      chatBox.lastChild.remove();
+      addMessage(data.reply, "ai");
     })
-    .catch(error => {
-      console.error(error);
-      answerBox.innerText = "Gagal menghubungi AI backend.";
+    .catch(() => {
+      chatBox.lastChild.remove();
+      addMessage("Gagal menghubungi AI backend.", "ai");
     });
 }
