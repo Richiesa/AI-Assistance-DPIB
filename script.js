@@ -67,6 +67,11 @@ textarea.addEventListener("input", () => {
   textarea.style.height = "auto";
   textarea.style.height = textarea.scrollHeight + "px";
 });
+function sendSuggestion(text) {
+  document.getElementById("question").value = text;
+  askAI();
+}
+
 
 
 
