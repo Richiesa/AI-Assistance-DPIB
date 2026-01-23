@@ -5,6 +5,7 @@ body {
 }
 
 .chat-container {
+  width: 100%;
   max-width: 600px;
   height: 100vh;
   margin: auto;
@@ -129,5 +130,46 @@ body.dark .message.ai {
   20% { opacity: 1; }
   100% { opacity: 0.2; }
 }
+/* ===== MOBILE OPTIMIZATION ===== */
+@media (max-width: 600px) {
+
+  .chat-container {
+    max-width: 100%;
+  }
+
+  .chat-header {
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  .chat-header .logo {
+    width: 28px;
+    height: 28px;
+  }
+
+  .chat-box {
+    padding: 10px;
+  }
+
+  .message {
+    font-size: 14px;
+    max-width: 90%;
+  }
+
+  .chat-input {
+    padding: 8px;
+  }
+
+  .chat-input input {
+    font-size: 16px;
+    padding: 12px;
+  }
+
+  .chat-input button {
+    padding: 12px 18px;
+    font-size: 16px;
+  }
+}
+
 
 
