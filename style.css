@@ -208,6 +208,10 @@ body.dark .message.ai {
     font-size: 16px;
   }
 }
+.chat-box {
+  padding-bottom: 80px;
+}
+
 
 
 
