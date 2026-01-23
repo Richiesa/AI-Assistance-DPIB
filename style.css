@@ -267,25 +267,26 @@ body.dark .hint {
   background: #e0e0e0;
 }
 
-/* Dark mode */
-body.dark .hint-bubble span {
-  background: #2a2a2a;
-  color: #eee;
-}
-
-body.dark .hint-bubble span:hover {
-  background: #3a3a3a;
-}
 .ai-disclaimer {
   font-size: 11px;
   color: #777;
   text-align: center;
-  padding: 6px 10px 10px;
+  padding: 6px 12px 10px;
 }
 
+/* Dark mode */
 body.dark .ai-disclaimer {
   color: #999;
 }
+
+/* Khusus HP */
+@media (max-width: 600px) {
+  .ai-disclaimer {
+    font-size: 10px;
+    line-height: 1.4;
+  }
+}
+
 
 
 
