@@ -276,6 +276,17 @@ body.dark .hint-bubble span {
 body.dark .hint-bubble span:hover {
   background: #3a3a3a;
 }
+.ai-disclaimer {
+  font-size: 11px;
+  color: #777;
+  text-align: center;
+  padding: 6px 10px 10px;
+}
+
+body.dark .ai-disclaimer {
+  color: #999;
+}
+
 
 
 
