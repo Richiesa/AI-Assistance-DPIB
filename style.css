@@ -5,10 +5,9 @@ body {
 }
 
 .chat-container {
-  width: 100%;
-  max-width: 600px;
+  width: 100vw;
   height: 100vh;
-  margin: auto;
+  margin: 0;
   display: flex;
   flex-direction: column;
   background: #ffffff;
@@ -30,8 +29,8 @@ body {
 
 .chat-box {
   flex: 1;
-  padding: 15px;
   overflow-y: auto;
+  padding-bottom: 90px;
 }
 
 .message {
@@ -211,6 +210,13 @@ body.dark .message.ai {
 .chat-box {
   padding-bottom: 80px;
 }
+@media (min-width: 768px) {
+  .chat-container {
+    max-width: 600px;
+    margin: auto;
+  }
+}
+
 
 
 
