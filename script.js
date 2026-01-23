@@ -71,6 +71,13 @@ function sendSuggestion(text) {
   document.getElementById("question").value = text;
   askAI();
 }
+window.onload = function () {
+  addMessage(
+    "Halo, selamat datang.\nSaya adalah asisten AI jurusan DPIB.\nSilakan bertanya seputar struktur bangunan, RAB, gambar kerja, atau proses konstruksi.",
+    "ai"
+  );
+};
+
 
 
 
