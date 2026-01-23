@@ -216,6 +216,28 @@ body.dark .message.ai {
     margin: auto;
   }
 }
+.suggestions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 10px;
+}
+
+.suggestions button {
+  border: 1px solid #ccc;
+  background: #f5f5f5;
+  border-radius: 16px;
+  padding: 6px 12px;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+body.dark .suggestions button {
+  background: #2a2a2a;
+  color: white;
+  border-color: #444;
+}
+
 
 
 
