@@ -34,9 +34,12 @@ function askAI() {
 
   const typingBubble = addTyping();
 
-  fetch(
-    "https://dpib-ai-backend.vercel.app/api/chat?message=" +
-    encodeURIComponent(question)
+  fetch("https://dpib-ai-backend.vercel.app/api/chat", {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify({ question })
+});
+
   )
     .then(res => res.json())
     .then(data => {
@@ -77,6 +80,7 @@ window.onload = function () {
     "ai"
   );
 };
+
 
 
 
