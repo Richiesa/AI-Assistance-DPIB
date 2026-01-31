@@ -36,7 +36,7 @@ function sendToAI(question) {
   fetch("https://dpib-ai-backend.vercel.app/api/chat", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ question })
+    body: JSON.stringify({ message: userText }),
   })
     .then(res => res.json())
     .then(data => {
@@ -50,7 +50,7 @@ function sendToAI(question) {
 }
 
 /* =========================
-   FORM SUBMIT (INTI SOLUSI)
+          FORM SUBMIT 
 ========================= */
 form.addEventListener("submit", function (e) {
   e.preventDefault(); //
@@ -73,3 +73,4 @@ window.onload = function () {
     "ai"
   );
 };
+
