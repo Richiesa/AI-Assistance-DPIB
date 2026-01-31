@@ -24,7 +24,7 @@ function addTyping() {
   return typing;
 }
 
-function askAI() {
+async function askAI() {
   const input = document.getElementById("question");
   const question = input.value.trim();
   if (!question) return;
@@ -32,29 +32,29 @@ function askAI() {
   addMessage(question, "user");
   input.value = "";
 
-  const typingBubble = addTyping();
+  addMessage("Sedang mengetik...", "ai", true);
 
-  fetch(
-    "https://dpib-ai-backend.vercel.app/api/chat?message=" +
-    encodeURIComponent(question)
-  )
-    .then(res => res.json())
-    .then(data => {
-      typingBubble.remove();
-      addMessage(data.reply, "ai");
-    })
-    .catch(() => {
-      typingBubble.remove();
-      addMessage("Gagal menghubungi AI backend.", "ai");
-    });
+  try {
+    const response = await fetch(
+      "https://dpib-ai-backend.vercel.app/api/chat",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ question })
+      }
+    );
+
+    const data = await response.json();
+    removeTyping();
+    addMessage(data.answer, "ai");
+  } catch (error) {
+    removeTyping();
+    addMessage("Gagal menghubungi AI backend.", "ai");
+  }
 }
-document
-  .getElementById("question")
-  .addEventListener("keypress", function (e) {
-    if (e.key === "Enter") {
-      askAI();
-    }
-  });
+
 const textarea = document.getElementById("question");
 
 textarea.addEventListener("keydown", function (e) {
@@ -77,3 +77,4 @@ window.onload = function () {
     "ai"
   );
 };
+
