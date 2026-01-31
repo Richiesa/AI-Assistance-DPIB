@@ -1,56 +1,65 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const chatBox = document.getElementById("chat-box");
-  const chatForm = document.getElementById("chat-form");
-  const questionInput = document.getElementById("question");
+const chatBox = document.getElementById("chat-box");
+const input = document.getElementById("user-input");
+const sendBtn = document.getElementById("send-btn");
 
-  function addMessage(text, sender) {
-    const bubble = document.createElement("div");
-    bubble.className = `bubble ${sender}`;
-    bubble.textContent = text;
-    chatBox.appendChild(bubble);
-    chatBox.scrollTop = chatBox.scrollHeight;
-  }
+function addBubble(text, sender) {
+  const bubble = document.createElement("div");
+  bubble.className = sender === "user" ? "bubble user" : "bubble ai";
+  bubble.textContent = text;
+  chatBox.appendChild(bubble);
+  chatBox.scrollTop = chatBox.scrollHeight;
+}
 
-  function addTyping() {
-    const typing = document.createElement("div");
-    typing.className = "bubble ai typing";
-    typing.textContent = "AI sedang mengetik...";
-    chatBox.appendChild(typing);
-    chatBox.scrollTop = chatBox.scrollHeight;
-    return typing;
-  }
+function addTyping() {
+  const typing = document.createElement("div");
+  typing.className = "bubble ai";
+  typing.id = "typing";
+  typing.textContent = "AI sedang mengetik...";
+  chatBox.appendChild(typing);
+  chatBox.scrollTop = chatBox.scrollHeight;
+}
 
-  async function sendToAI(userText) {
-    const typingBubble = addTyping();
+function removeTyping() {
+  const typing = document.getElementById("typing");
+  if (typing) typing.remove();
+}
 
-    try {
-      const res = await fetch(
-        "https://dpib-ai-backend.vercel.app/api/chat",
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ message: userText }),
-        }
-      );
-
-      const data = await res.json();
-      typingBubble.remove();
-      addMessage(data.reply, "ai");
-    } catch (err) {
-      typingBubble.remove();
-      addMessage("Gagal menghubungi AI backend.", "ai");
-    }
-  }
-
-  chatForm.addEventListener("submit", (e) => {
-    e.preventDefault();
-
-    const userText = questionInput.value.trim();
-    if (!userText) return;
-
-    addMessage(userText, "user");
-    questionInput.value = "";
-
-    sendToAI(userText);
-  });
+sendBtn.addEventListener("click", sendMessage);
+input.addEventListener("keypress", (e) => {
+  if (e.key === "Enter") sendMessage();
 });
+
+async function sendMessage() {
+  const message = input.value.trim();
+  if (!message) return;
+
+  // ⬇️ INI YANG SEBELUMNYA TIDAK ADA
+  addBubble(message, "user");
+  input.value = "";
+
+  addTyping();
+
+  try {
+    const response = await fetch(
+      "https://dpib-ai-backend.vercel.app/api/chat",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ message })
+      }
+    );
+
+    const data = await response.json();
+    removeTyping();
+
+    addBubble(
+      data.reply || "AI tidak dapat memberikan jawaban.",
+      "ai"
+    );
+  } catch (error) {
+    removeTyping();
+    addBubble("Gagal menghubungi AI backend.", "ai");
+  }
+}
