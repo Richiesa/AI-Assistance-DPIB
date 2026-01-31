@@ -22,15 +22,15 @@
     <div id="chat-box" class="chat-box"></div>
 
     <!-- INPUT AREA -->
-    <div class="input-area">
-      <input
-        type="text"
-        id="question"
-        placeholder="Ketik pertanyaan konstruksi…"
-        autocomplete="off"
-      />
-      <button onclick="askAI()">Kirim</button>
-    </div>
+    <form id="chat-form" class="input-area">
+  <input
+    type="text"
+    id="question"
+    placeholder="Ketik pertanyaan konstruksi…"
+    autocomplete="off"
+  />
+  <button type="submit">Kirim</button>
+</form>
 
     <!-- DISCLAIMER -->
     <div class="disclaimer">
@@ -48,3 +48,4 @@
   <script src="script.js"></script>
 </body>
 </html>
+
