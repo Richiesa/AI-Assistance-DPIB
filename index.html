@@ -4,24 +4,47 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>AI Asisten DPIB</title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-  <!-- CHAT AREA -->
-  <div id="chat-box" style="height:70vh; overflow-y:auto;"></div>
+  <div class="app">
 
-  <!-- INPUT AREA -->
-  <div style="display:flex; gap:8px;">
-    <input
-      type="text"
-      id="question"
-      placeholder="Ketik pertanyaan..."
-      style="flex:1;"
-    />
-    <button onclick="askAI()">Kirim</button>
+    <!-- HEADER -->
+    <div class="header">
+      <img src="logo.png" alt="Logo" class="logo" />
+      <span class="title">AI Asisten DPIB</span>
+    </div>
+
+    <!-- CHAT AREA -->
+    <div id="chat-box" class="chat-box"></div>
+
+    <!-- INPUT AREA -->
+    <div class="input-area">
+      <input
+        type="text"
+        id="question"
+        placeholder="Ketik pertanyaan konstruksi…"
+        autocomplete="off"
+      />
+      <button onclick="askAI()">Kirim</button>
+    </div>
+
+    <!-- DISCLAIMER -->
+    <div class="disclaimer">
+      AI dapat membuat kesalahan. Periksa kembali jawaban penting.
+    </div>
+
+    <!-- COPYRIGHT -->
+    <div class="copyright">
+      On development by Richiesa
+    </div>
+
   </div>
 
-  <!-- SCRIPT WAJIB DI BAWAH -->
+  <!-- SCRIPT WAJIB PALING BAWAH -->
   <script src="script.js"></script>
 </body>
 </html>
