@@ -1,64 +1,27 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Architectwo Smart Assistant</title>
-  <link rel="stylesheet" href="style.css">
-  <div class="chat-header">
-    <div class="header-left">
-    <img src="logo.png" class="logo">
-  </div>
-  <button id="darkToggle">🌙</button>
-</div>
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Asisten DPIB</title>
 </head>
 <body>
 
-<div class="chat-container">
-  <div class="chat-header">
-    <img src="logo.png" class="logo">
-    <span id="ai-name">Architectwo Smart Assistant</span>
+  <!-- CHAT AREA -->
+  <div id="chat-box" style="height:70vh; overflow-y:auto;"></div>
+
+  <!-- INPUT AREA -->
+  <div style="display:flex; gap:8px;">
+    <input
+      type="text"
+      id="question"
+      placeholder="Ketik pertanyaan..."
+      style="flex:1;"
+    />
+    <button onclick="askAI()">Kirim</button>
   </div>
 
-  <div id="chat-box" class="chat-box"></div>
-  <div class="suggestions">
-  <button onclick="sendSuggestion('Apa fungsi sloof dan kolom?')">
-    Fungsi sloof & kolom
-  </button>
-  <button onclick="sendSuggestion('Apa itu RAB dalam konstruksi?')">
-    Pengertian RAB
-  </button>
-  <button onclick="sendSuggestion('Urutan pekerjaan bangunan')">
-    Urutan pekerjaan
-  </button>
-  <button onclick="sendSuggestion('Apa fungsi gambar kerja?')">
-    Gambar kerja
-  </button>
-</div>
-</div>
-
-  <div class="chat-input">
-  <textarea id="question" placeholder="Ketik pesan di sini..." rows="1"></textarea>
-  <button onclick="askAI()" id="sendBtn">➤</button>
-</div>
-  <div class="ai-disclaimer">
-  Asisten AI ini dapat membuat kesalahan. Silakan verifikasi informasi penting secara mandiri.
-</div>
-  <div class="copyright">
-  © On development by Richiesa
-</div>
-
-
-</div>
-
-<script src="script.js"></script>
+  <!-- SCRIPT WAJIB DI BAWAH -->
+  <script src="script.js"></script>
 </body>
 </html>
-
-
-
-
-
-
-
